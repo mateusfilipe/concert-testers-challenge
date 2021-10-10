@@ -37,6 +37,29 @@ namespace GoogleSearch_Test
         }
 
         [Test]
+        public void BarraDePesquisaListTest()
+        {
+            Driver.FindElement(By.Name("q")).SendKeys("selenium webdriver"); //Definindo conteúdo da barra de pesquisa
+            System.Threading.Thread.Sleep(10000);
+            Random rndElementoAClicar = new Random();
+            int index = rndElementoAClicar.Next(0, 9);
+            
+            IList<IWebElement> SearchList = Driver.FindElements(By.XPath("//*[@class='sbct']"));
+            //SearchList.Add(Driver.FindElement(By.XPath("//*[@class='sbct sbre']")));
+        
+
+            SearchList[index].Click();
+
+
+            /** 
+             * Título da página esperado: CONCERT Technologies - Pesquisa Google
+             * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
+             * um título com o texto especificado.
+             */
+            Assert.IsTrue(!Driver.Url.Equals("https://google.com"));
+        }
+
+        [Test]
         public void PesquisaBtnTest()
         {
             Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies"); //Definindo conteúdo da barra de pesquisa
