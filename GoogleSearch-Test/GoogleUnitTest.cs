@@ -22,42 +22,57 @@ namespace GoogleSearch_Test
             Driver.Navigate().GoToUrl("https://google.com"); //Acessando página do Google como padrão para os testes
         }
 
+        /** 
+         * Título da página esperado: CONCERT Technologies - Pesquisa Google
+         * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
+         * um título com o texto especificado no Assert.IsTrue.
+         */
         [Test]
         public void BarraDePesquisaTest()
         {
             Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies"); //Definindo conteúdo da barra de pesquisa
             Driver.FindElement(By.Name("q")).Submit(); //Enviando comando para efetuar a busca
 
-            /** 
-             * Título da página esperado: CONCERT Technologies - Pesquisa Google
-             * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
-             * um título com o texto especificado.
-             */
             Assert.IsTrue(Driver.Title.Equals("CONCERT Technologies - Pesquisa Google"));
         }
 
+        /** 
+          * A URL esperada: Não é a URL do Google
+          * Uma vez que após fazer a pesquisa e selecionar uma das opções da lista
+          * que aparece depois de digitar, deve ser redirecionado para a página
+          * de pesquisa do item escolhido.
+          */
         [Test]
         public void BarraDePesquisaListTest()
         {
-            Driver.FindElement(By.Name("q")).SendKeys("selenium webdriver"); //Definindo conteúdo da barra de pesquisa
+            Driver.FindElement(By.Name("q")).SendKeys("selenium webdriver");
             System.Threading.Thread.Sleep(10000); //Espera para garatir carregamento da página
             Random rndElementoAClicar = new Random(); 
             int index = rndElementoAClicar.Next(0, 9); //Definindo intervalo para seleção de número aleatório a ser escolhido da lista
             
-            IList<IWebElement> SearchList = Driver.FindElements(By.XPath("//*[@class='sbct']")); //Buscando elemento pelo XPath
-            //SearchList.Add(Driver.FindElement(By.XPath("//*[@class='sbct sbre']")));
-        
-
+            IList<IWebElement> SearchList = Driver.FindElements(By.XPath("//*[@class='sbct']"));
+            
             SearchList[index].Click();
 
-
-            /** 
-             * A URL esperada: Não é a URL do Google
-             * Uma vez que após fazer a pesquisa e selecionar uma das opções da lista
-             * que aparece depois de digitar, deve ser redirecionado para a página
-             * de pesquisa do item escolhido.
-             */
             Assert.IsTrue(!Driver.Url.Equals("https://google.com"));
+        }
+
+
+        /** 
+         * Título da página esperado: Google
+         * Clicando no botão de Pesquisar sem que se digite nada
+         * no campo de pesquisa do Google, a página não deve ser
+         * alterada e se manter no Google.
+        */
+        [Test]
+        public void BarraDePesquisaEmptyTest()
+        {
+            Driver.FindElement(By.Name("q")).SendKeys("");
+            IWebElement PesquisaBtn = Driver.FindElements(By.Name("btnK"))[1]; //Existem 2 botões na tela
+            System.Threading.Thread.Sleep(2000);
+            PesquisaBtn.Click();
+            
+            Assert.IsTrue(Driver.Title.Equals("Google"));
         }
 
 
@@ -65,41 +80,30 @@ namespace GoogleSearch_Test
          * Título da página esperado: CONCERT Technologies - Pesquisa Google
          * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
          * um título com o texto especificado.
-        */
-        [Test]
-        public void BarraDePesquisaEmptyTest()
-        {
-            Driver.FindElement(By.Name("q")).SendKeys(""); //Definindo conteúdo da barra de pesquisa
-            IWebElement PesquisaBtn = Driver.FindElements(By.Name("btnK"))[1]; //Enviando comando para efetuar a busca
-            System.Threading.Thread.Sleep(2000); //Espera para carregamento da página ocorrer por completo
-            PesquisaBtn.Click(); //Clique no botão de Pesquisar
-            
-            Assert.IsTrue(Driver.Title.Equals("Google"));
-        }
-
+         */
         [Test]
         public void PesquisaBtnTest()
         {
-            Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies"); //Definindo conteúdo da barra de pesquisa
-            IWebElement PesquisaBtn = Driver.FindElement(By.Name("btnK")); //Enviando comando para efetuar a busca
-            System.Threading.Thread.Sleep(2000); //Espera para carregamento da página ocorrer por completo
-            PesquisaBtn.Click(); //Clique no botão de Pesquisar
+            Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies");
+            IWebElement PesquisaBtn = Driver.FindElement(By.Name("btnK"));
+            System.Threading.Thread.Sleep(2000);
+            PesquisaBtn.Click();
 
-            /** 
-             * Título da página esperado: CONCERT Technologies - Pesquisa Google
-             * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
-             * um título com o texto especificado.
-             */
             Assert.IsTrue(Driver.Title.Equals("CONCERT Technologies - Pesquisa Google"));
         }
 
-
+        /** 
+        * Título da página esperado: Google
+        * Caso a navegação por páginas seja feita de forma correta, é necessário que
+        * todos os links sejam alterados e acessados, mas no final o título deve ser
+        * o mesmo da página inicial.
+        */
         [Test]
         public void TodosLinksTest()
         {
-            int size = Driver.FindElements(By.TagName("a")).Count(); //Contando quantidade de links presentes na página
+            int qtdLinks = Driver.FindElements(By.TagName("a")).Count();
             
-            for (int i = 0; i < size; i++) //Repetição para percorrer por todos os links da página
+            for (int i = 0; i < qtdLinks; i++)
             {
                 if (!Driver.FindElements(By.TagName("a"))[i].Text.Equals("")){ //Evitando entrada em links que não alteram a página
                     Driver.FindElements(By.TagName("a"))[i].Click();
@@ -108,15 +112,15 @@ namespace GoogleSearch_Test
                 }
             }
 
-            /** 
-             * Título da página esperado: Google
-             * Caso a navegação por páginas seja feita de forma correta, é necessário que
-             * todos os links sejam alterados e acessados, mas no final o título deve ser
-             * o mesmo da página inicial.
-             */
             Assert.IsTrue(Driver.Title.Equals("Google"));
         }
 
+        /** 
+         * Título da página esperado: Google Doodles
+         * Após clicar no botão de Estou com Sorte sem nada escrito
+         * na pesquisa, por padrão o Google direciona o usuário para
+         * a página do Google Doodles.
+         */
         [Test]
         public void EstouComSorteBtnTest()
         {
@@ -133,22 +137,24 @@ namespace GoogleSearch_Test
             Assert.IsTrue(Driver.Title.Equals("Google Doodles"));
         }
 
+        /** 
+         * Url da página esperado: https://www.linkedin.com/company/concertsa
+         * Caso a pesquisa seja feita de forma adequada e o botão Estou com Sorte
+         * seja apertado, a página a ser acessada é o Linkedin da Concert, pois
+         * o botão de Estou com Sorte encaminha para a primeira página da pesquisa
+         * quando é clicado junto de uma pesquisa
+         */
         [Test]
         public void PesquisaEstouComSorteTest()
         {
-            var wait = new WebDriverWait(Driver, TimeSpan.FromMinutes(1)); //Variável de tempo de espera
-            Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies"); //Definindo conteúdo da barra de pesquisa
+            var wait = new WebDriverWait(Driver, TimeSpan.FromMinutes(1));
+            Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies");
             IWebElement EstouComSorteBtn = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("btnI"))); //Esperando até que o botão seja "clicável"
 
-            System.Threading.Thread.Sleep(2000); //Espera para carregamento da página ocorrer por completo
+            System.Threading.Thread.Sleep(2000);
 
-            EstouComSorteBtn.Click(); //Clique no botão de Estou Com Sorte
+            EstouComSorteBtn.Click();
 
-            /** 
-             * Título da página esperado: https://www.linkedin.com/company/concertsa
-             * Caso a pesquisa seja feita de forma adequada e o botão Estou com Sorte
-             * seja apertado, a página a ser acessada é o Linkedin da Concert.
-             */
             Assert.IsTrue(Driver.Url.Equals("https://www.linkedin.com/company/concertsa"));
         }
     }
