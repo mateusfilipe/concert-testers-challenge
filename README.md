@@ -6,7 +6,16 @@ importantes para assegurar que a página está funcionando conforme o esperado.
 
 O arquivo principal com os tests é: <a href="https://github.com/mateusfilipe/concert-testers-challenge/blob/main/GoogleSearch-Test/GoogleUnitTest.cs">GoogleUnitTest.cs</a>
 
-## Fora feitos 7 cenários de teste:
+## Teste você mesmo:
+
+ * Faça download ou clone o projeto
+ * Abra o projeto na IDE: <a href="https://visualstudio.microsoft.com/pt-br/vs/">Visual Studio 2019</a>, ou outra de sua preferência
+ * Selecione o arquivo <a href="https://github.com/mateusfilipe/concert-testers-challenge/blob/main/GoogleSearch-Test/GoogleUnitTest.cs">GoogleUnitTest.cs</a> para efetuar os testes
+ * Efetue os testes separadamente pelo Gerenciador de Testes do Visual Studio
+ * Ou efetue todos de uma vez para uma experiência completa dos testes (*não recomendado*)
+ * Qualquer dúvida ou problema no teste entre em contato
+
+## Foram feitos 7 cenários de teste:
   
 ### Primeiro Cenário:
  * Barra de pesquisa com conteúdo = “CONCERT Technologies”; Execução do comando de submit para envio da pesquisa;
