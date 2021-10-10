@@ -4,7 +4,7 @@ Repositório com o desafio técnico para a vaga, ESTAGIÁRIO DE TESTES na Concer
 WebDriver. O objetivo é automatizar a página de busca do Google validando os pontos que forem
 importantes para assegurar que a página está funcionando conforme o esperado.
 
-O arquivo principal com os tests é: <a href="https://github.com/mateusfilipe/concert-testers-challenge/blob/main/GoogleSearch-Test/GoogleUnitTest.cs">GoogleUnitTest.cs</a>
+O arquivo principal com os testes é: <a href="https://github.com/mateusfilipe/concert-testers-challenge/blob/main/GoogleSearch-Test/GoogleUnitTest.cs">GoogleUnitTest.cs</a>
 
 ## Teste você mesmo:
 
