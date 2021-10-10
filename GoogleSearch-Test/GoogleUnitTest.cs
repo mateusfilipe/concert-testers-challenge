@@ -78,12 +78,36 @@ namespace GoogleSearch_Test
         [Test]
         public void EstouComSorteBtnTest()
         {
-            Driver.FindElement(By.Name("q")).SendKeys("");
-            IWebElement EstouComSorteBtn = Driver.FindElement(By.Name("btnI"));
+            var wait = new WebDriverWait(Driver, TimeSpan.FromMinutes(1));
+            Driver.FindElement(By.Name("q")).SendKeys("Rice");
             System.Threading.Thread.Sleep(2000);
+            IWebElement EstouComSorteBtn = Driver.FindElement(By.Name("btnI"));
+            //IWebElement EstouComSorteBtn = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("btnI")));
+
+            System.Threading.Thread.Sleep(2000);
+            
             EstouComSorteBtn.Click();
 
             Assert.IsTrue(Driver.Title.Equals("Google Doodles"));
+        }
+
+        [Test]
+        public void PesquisaEstouComSorteTest()
+        {
+            var wait = new WebDriverWait(Driver, TimeSpan.FromMinutes(1)); //Variável de tempo de espera
+            Driver.FindElement(By.Name("q")).SendKeys("CONCERT Technologies"); //Definindo conteúdo da barra de pesquisa
+            IWebElement EstouComSorteBtn = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("btnI"))); //Esperando até que o botão seja "clicável"
+
+            System.Threading.Thread.Sleep(2000); //Espera para carregamento da página ocorrer por completo
+
+            EstouComSorteBtn.Click(); //Clique no botão de Estou Com Sorte
+
+            /** 
+             * Título da página esperado: https://www.linkedin.com/company/concertsa
+             * Caso a pesquisa seja feita de forma adequada e o botão Estou com Sorte
+             * seja apertado, a página a ser acessada é o Linkedin da Concert.
+             */
+            Assert.IsTrue(Driver.Url.Equals("https://www.linkedin.com/company/concertsa"));
         }
     }
 }

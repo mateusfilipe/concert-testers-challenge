@@ -94,4 +94,5 @@ C:\Users\T-Gamer\Documents\GitHub\concert-testers-challenge\GoogleSearch-Test\ob
 C:\Users\T-Gamer\Documents\GitHub\concert-testers-challenge\GoogleSearch-Test\obj\Debug\netcoreapp3.1\GoogleSearch-Test.pdb
 C:\Users\T-Gamer\Documents\GitHub\concert-testers-challenge\GoogleSearch-Test\obj\Debug\netcoreapp3.1\GoogleSearch-Test.genruntimeconfig.cache
 C:\Users\T-Gamer\Documents\GitHub\concert-testers-challenge\GoogleSearch-Test\bin\Debug\netcoreapp3.1\WebDriver.dll
+C:\Users\T-Gamer\Documents\GitHub\concert-testers-challenge\GoogleSearch-Test\bin\Debug\netcoreapp3.1\WebDriver.Support.dll
 C:\Users\T-Gamer\Documents\GitHub\concert-testers-challenge\GoogleSearch-Test\obj\Debug\netcoreapp3.1\GoogleSearch-Test.csproj.CoreCompileInputs.cache

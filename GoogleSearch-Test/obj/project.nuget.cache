@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H/dpApHTQCtVOQlPpwssgDVe4F2eMpe3qmtrvRzDa4TzmoHbylXpAphfjQuucgrErmhebgrS6XFG+mdzIw2riQ==",
+  "dgSpecHash": "qjcoRK/q7/hmE/nXD3sNcko1kBiN0C318fPsvno0zXvJnj2vvtosyZgy6w/AWsg/o6wt/jBI9VtuM98PorRIQQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\T-Gamer\\Documents\\GitHub\\concert-testers-challenge\\GoogleSearch-Test\\GoogleSearch-Test.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\T-Gamer\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
     "C:\\Users\\T-Gamer\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512",
     "C:\\Users\\T-Gamer\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\T-Gamer\\.nuget\\packages\\selenium.support\\3.141.0\\selenium.support.3.141.0.nupkg.sha512",
     "C:\\Users\\T-Gamer\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
     "C:\\Users\\T-Gamer\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\T-Gamer\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
