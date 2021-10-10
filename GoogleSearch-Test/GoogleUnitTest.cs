@@ -60,6 +60,23 @@ namespace GoogleSearch_Test
             Assert.IsTrue(!Driver.Url.Equals("https://google.com"));
         }
 
+
+        /** 
+         * Título da página esperado: CONCERT Technologies - Pesquisa Google
+         * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
+         * um título com o texto especificado.
+        */
+        [Test]
+        public void BarraDePesquisaEmptyTest()
+        {
+            Driver.FindElement(By.Name("q")).SendKeys(""); //Definindo conteúdo da barra de pesquisa
+            IWebElement PesquisaBtn = Driver.FindElements(By.Name("btnK"))[1]; //Enviando comando para efetuar a busca
+            System.Threading.Thread.Sleep(2000); //Espera para carregamento da página ocorrer por completo
+            PesquisaBtn.Click(); //Clique no botão de Pesquisar
+            
+            Assert.IsTrue(Driver.Title.Equals("Google"));
+        }
+
         [Test]
         public void PesquisaBtnTest()
         {
@@ -75,6 +92,7 @@ namespace GoogleSearch_Test
              */
             Assert.IsTrue(Driver.Title.Equals("CONCERT Technologies - Pesquisa Google"));
         }
+
 
         [Test]
         public void TodosLinksTest()
@@ -103,9 +121,9 @@ namespace GoogleSearch_Test
         public void EstouComSorteBtnTest()
         {
             var wait = new WebDriverWait(Driver, TimeSpan.FromMinutes(1));
-            Driver.FindElement(By.Name("q")).SendKeys("Rice");
-            System.Threading.Thread.Sleep(2000);
-            IWebElement EstouComSorteBtn = Driver.FindElement(By.Name("btnI"));
+            Driver.FindElement(By.Name("q")).SendKeys(" ");
+            System.Threading.Thread.Sleep(10000);
+            IWebElement EstouComSorteBtn = Driver.FindElements(By.Name("btnI"))[1];
             //IWebElement EstouComSorteBtn = wait.Until(ExpectedConditions.ElementToBeClickable(By.Name("btnI")));
 
             System.Threading.Thread.Sleep(2000);
