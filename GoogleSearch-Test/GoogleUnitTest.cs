@@ -40,11 +40,11 @@ namespace GoogleSearch_Test
         public void BarraDePesquisaListTest()
         {
             Driver.FindElement(By.Name("q")).SendKeys("selenium webdriver"); //Definindo conteúdo da barra de pesquisa
-            System.Threading.Thread.Sleep(10000);
-            Random rndElementoAClicar = new Random();
-            int index = rndElementoAClicar.Next(0, 9);
+            System.Threading.Thread.Sleep(10000); //Espera para garatir carregamento da página
+            Random rndElementoAClicar = new Random(); 
+            int index = rndElementoAClicar.Next(0, 9); //Definindo intervalo para seleção de número aleatório a ser escolhido da lista
             
-            IList<IWebElement> SearchList = Driver.FindElements(By.XPath("//*[@class='sbct']"));
+            IList<IWebElement> SearchList = Driver.FindElements(By.XPath("//*[@class='sbct']")); //Buscando elemento pelo XPath
             //SearchList.Add(Driver.FindElement(By.XPath("//*[@class='sbct sbre']")));
         
 
@@ -52,9 +52,10 @@ namespace GoogleSearch_Test
 
 
             /** 
-             * Título da página esperado: CONCERT Technologies - Pesquisa Google
-             * Caso a pesquisa ocorra de forma correta o título da página deverá contar por padrão
-             * um título com o texto especificado.
+             * A URL esperada: Não é a URL do Google
+             * Uma vez que após fazer a pesquisa e selecionar uma das opções da lista
+             * que aparece depois de digitar, deve ser redirecionado para a página
+             * de pesquisa do item escolhido.
              */
             Assert.IsTrue(!Driver.Url.Equals("https://google.com"));
         }
